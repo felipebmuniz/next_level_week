@@ -1,0 +1,32 @@
+import React from 'react';
+import { AppLoading } from 'expo';
+import { StatusBar } from 'react-native';
+
+//expo install expo-font @expo-google-fonts/ubuntu @expo-google-fonts/roboto
+import { Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
+import { Ubuntu_700Bold, useFonts } from '@expo-google-fonts/ubuntu';
+
+import Routes from './src/routes';
+
+
+export default function App() {
+
+  // Adicionar fontes
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Ubuntu_700Bold
+  });
+
+  // Espera o carregamento das fontes
+  if(!fontsLoaded) {
+    return <AppLoading />
+  }
+
+  return (
+    <>
+      <StatusBar barStyle = "dark-content" backgroundColor = "transparent" translucent />
+      <Routes />
+    </>
+  );
+} 
